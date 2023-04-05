@@ -7,7 +7,6 @@ const movieSchema = new mongoose.Schema({
     },
     generos: {
         type: Array,
-        required: true,
     },
     direccion: {
         type: String,
@@ -20,6 +19,7 @@ const movieSchema = new mongoose.Schema({
     },
     video: {
         type: String,
+        required: true,
     },
     img: {
         type: String,

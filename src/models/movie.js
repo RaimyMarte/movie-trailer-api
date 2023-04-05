@@ -18,9 +18,15 @@ const movieSchema = new mongoose.Schema({
     sinopsis: {
         type: String,
     },
+    video: {
+        type: String,
+    },
     img: {
         type: String,
         required: true,
+    },
+    year: {
+        type: String,
     },
 })
 

@@ -26,5 +26,19 @@ router.get('/movie', async (req, res) => {
     }
 })
 
+
+router.get('/movie/:id', async (req, res) => {
+
+    try {
+        const movie = await Movie.findOne({ _id: req.params.id})
+
+        if (!movie) return res.status(404).send()
+
+        res.send(movie)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
 module.exports = router
 

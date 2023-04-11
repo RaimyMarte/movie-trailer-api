@@ -30,7 +30,7 @@ router.get('/movie', async (req, res) => {
 router.get('/movie/:id', async (req, res) => {
 
     try {
-        const movie = await Movie.findOne({ _id: req.params.id})
+        const movie = await Movie.findOne({ _id: req.params.id })
 
         if (!movie) return res.status(404).send()
 
@@ -44,13 +44,28 @@ router.patch('/movie/:id', auth, async (req, res) => {
     const updateValues = Object.keys(req.body)
 
     try {
-        const movie = await Movie.findOne({ _id: req.params.id})
+        const movie = await Movie.findOne({ _id: req.params.id })
 
         if (!movie) return res.status(404).send()
 
         updateValues.forEach(key => movie[key] = req.body[key])
 
         await movie.save()
+
+        res.send(movie)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+router.delete('/movie/:id', auth, async (req, res) => {
+
+    try {
+        const movie = await Movie.findOne({ _id: req.params.id })
+
+        if (!movie) return res.status(404).send()
+
+        movie.deleteOne({ _id: req.params.id })
 
         res.send(movie)
     } catch (error) {

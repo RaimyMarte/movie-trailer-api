@@ -12,7 +12,7 @@ const app = express()
 //Config Express
 app.use(cors())
 app.use(express.json())
-app.use('/.netlify/functions/api', movieRouter)
-app.use('/.netlify/functions/api', userRouter)
+app.use('/.netlify/functions/index', movieRouter)
+app.use('/.netlify/functions/index', userRouter)
 
 module.exports.handler = serverless(app)

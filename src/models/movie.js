@@ -1,4 +1,4 @@
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
 
 const movieSchema = new mongoose.Schema({
     nombre: {
@@ -33,6 +33,10 @@ const movieSchema = new mongoose.Schema({
         trim: true
     },
     year: {
+        type: String,
+        trim: true
+    },
+    pais: {
         type: String,
         trim: true
     },
